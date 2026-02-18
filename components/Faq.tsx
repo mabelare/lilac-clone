@@ -30,17 +30,55 @@ const Faq = () => {
 
   return (
     <section className="px-6 pt-16 pb-0 bg-secondary text-primary">
-      <div className="max-w-5xl mx-auto">
+      <div className="lg:hidden max-w-5xl mx-auto">
         <div className="mb-12">
-          <div className="max-w-[120px] sm:max-w-[150px] lg:max-w-[180px] mx-auto rounded-t-[999px] overflow-hidden bg-white">
+          <div className="max-w-30 sm:max-w-37.5 mx-auto rounded-t-[999px] overflow-hidden bg-white">
             <img src="/faq.jpg" alt="FAQ" className="w-full h-auto block" />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 lg:gap-12 items-start">
-          <div>
-            <h2 className="text-4xl sm:text-5xl font-semibold mb-6">FAQs</h2>
-          </div>
+        <h2 className="text-4xl sm:text-5xl font-semibold mb-6 text-center">
+          FAQs
+        </h2>
+      </div>
+
+      <div className="lg:hidden">
+        <div className="max-w-5xl mx-auto border-t border-primary">
+          {faqItems.map((item, index) => (
+            <div key={index} className="border-b border-primary px-6">
+              <button
+                onClick={() => toggleFaq(index)}
+                className="w-full py-5 flex items-center gap-4 text-left"
+              >
+                <span className="text-lg font-semibold">{item.question}</span>
+                <span className="text-2xl ml-auto shrink-0">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </button>
+
+              {openIndex === index && (
+                <div className="pb-5 pl-10 pr-2">
+                  <p className="text-base sm:text-lg leading-relaxed">
+                    {item.answer}
+                  </p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="hidden lg:grid max-w-6xl mx-auto grid-cols-2 gap-14 items-start">
+        <div className="mx-auto w-full max-w-md xl:max-w-lg rounded-t-[999px] overflow-hidden bg-white">
+          <img
+            src="/faq.jpg"
+            alt="FAQ"
+            className="w-full h-auto block aspect-4/5 object-cover"
+          />
+        </div>
+
+        <div className="mt-4 lg:mt-12">
+          <h2 className="mt-8 lg:mt-24 lg:text-5xl font-semibold mb-8">FAQs</h2>
 
           <div className="border-t border-primary">
             {faqItems.map((item, index) => (
@@ -49,10 +87,10 @@ const Faq = () => {
                   onClick={() => toggleFaq(index)}
                   className="w-full py-5 flex items-center gap-4 text-left"
                 >
-                  <span className="text-lg font-semibold">{item.question}</span>
-                  <span className="text-2xl ml-auto shrink-0">
+                  <span className="text-2xl lg:text-3xl leading-none shrink-0">
                     {openIndex === index ? "−" : "+"}
                   </span>
+                  <span className="text-2xl lg:text-3xl">{item.question}</span>
                 </button>
 
                 {openIndex === index && (

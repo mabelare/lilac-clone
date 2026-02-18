@@ -11,21 +11,27 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-secondary text-primary">
-      {/* HEADER */}
       <header className="sticky top-0 z-40 flex items-center justify-between px-6 py-4 bg-white shadow-sm">
-        {/* Hamburger Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="flex flex-col gap-[5px] w-10"
+          className="flex flex-col gap-1.25 w-10 lg:hidden"
         >
           <span className="block w-8 h-0.5 bg-primary"></span>
           <span className="block w-8 h-0.5 bg-primary"></span>
         </button>
 
-        <h1 className="text-xl font-semibold">Dr. Maya Reynolds</h1>
+        <h1 className="text-xl lg:text-3xl font-semibold">Dr. Maya Reynolds</h1>
+
+        <nav className="hidden lg:flex gap-8 text-primary lg:text-xl">
+          <a className="hover:text-accent transition" href="/blog">
+            Blog
+          </a>
+          <a className="hover:text-accent transition" href="/contact">
+            Contact
+          </a>
+        </nav>
       </header>
 
-      {/* FULLSCREEN MENU */}
       {open && (
         <div className="fixed inset-0 z-50 bg-white">
           <button
@@ -36,10 +42,16 @@ export default function Home() {
             x
           </button>
           <nav className="h-full flex flex-col items-center justify-center gap-6 text-2xl">
-            <a className="text-primary hover:text-accent transition" href="#">
+            <a
+              className="text-primary hover:text-accent transition"
+              href="/blog"
+            >
               Blog
             </a>
-            <a className="text-primary hover:text-accent transition" href="#">
+            <a
+              className="text-primary hover:text-accent transition"
+              href="/contact"
+            >
               Contact
             </a>
           </nav>
