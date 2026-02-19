@@ -37,7 +37,7 @@ const Faq = () => {
           </div>
         </div>
 
-        <h2 className="text-4xl sm:text-5xl font-semibold mb-6 text-center">
+        <h2 className="text-[42px] sm:text-5xl font-semibold mb-6 text-left w-fit mr-auto">
           FAQs
         </h2>
       </div>
@@ -50,10 +50,10 @@ const Faq = () => {
                 onClick={() => toggleFaq(index)}
                 className="w-full py-5 flex items-center gap-4 text-left"
               >
-                <span className="text-lg font-semibold">{item.question}</span>
-                <span className="text-2xl ml-auto shrink-0">
+                <span className="text-2xl shrink-0">
                   {openIndex === index ? "−" : "+"}
                 </span>
+                <span className="text-lg font-semibold">{item.question}</span>
               </button>
 
               {openIndex === index && (
@@ -87,10 +87,10 @@ const Faq = () => {
                   onClick={() => toggleFaq(index)}
                   className="w-full py-5 flex items-center gap-4 text-left"
                 >
-                  <span className="text-2xl lg:text-3xl leading-none shrink-0">
+                  <span className="text-2xl lg:text-3xl">{item.question}</span>
+                  <span className="text-2xl lg:text-3xl leading-none ml-auto shrink-0">
                     {openIndex === index ? "−" : "+"}
                   </span>
-                  <span className="text-2xl lg:text-3xl">{item.question}</span>
                 </button>
 
                 {openIndex === index && (

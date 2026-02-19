@@ -43,7 +43,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Blog Post Four",
     subtitle: "Why Being High-Functioning Can Still Feel Exhausting",
     date: "Apr 1",
-    image: "/faq.jpg",
+    image: "/Anxiety.jpg",
     content: [
       "Many people appear capable, successful, and composed on the outside while feeling overwhelmed internally. This post explores the experience of being “high-functioning” yet emotionally drained, and why seeking support can be meaningful even when life seems to be going well on the surface.",
     ],

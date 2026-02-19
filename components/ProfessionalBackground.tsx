@@ -44,8 +44,8 @@ export default function ProfessionalBackground() {
   };
 
   return (
-    <section className="px-6 pt-16 pb-0 bg-secondary text-primary">
-      <div className="max-w-7xl mx-auto">
+    <section className="pt-16 pb-0 mt-12 bg-primary/8 text-primary border-y border-primary/20 w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="text-center">
           <h2 className="text-3xl sm:text-4xl font-semibold mb-8">
             My Professional Background
@@ -54,12 +54,12 @@ export default function ProfessionalBackground() {
       </div>
 
       <div>
-        <div className="max-w-7xl mx-auto border-t border-primary">
+        <div className="w-[82%] sm:w-[86%] lg:w-full max-w-3xl mx-auto border-t border-primary">
           {items.map((item, index) => (
-            <div key={item.title} className="border-b border-primary">
+            <div key={item.title} className="border-b border-primary px-6">
               <button
                 onClick={() => toggleItem(index)}
-                className="w-full py-5 flex items-center gap-4 text-left px-6"
+                className="w-full py-5 flex items-center gap-4 text-left"
               >
                 <span className="text-lg font-semibold">{item.title}</span>
                 <span className="text-2xl ml-auto shrink-0">
@@ -77,7 +77,7 @@ export default function ProfessionalBackground() {
         </div>
       </div>
 
-      <div className="mt-12 bg-primary text-white w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+      <div className="mt-12 bg-primary text-secondary w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
         <div className="px-6 py-16">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl sm:text-5xl font-semibold leading-tight">
@@ -93,7 +93,7 @@ export default function ProfessionalBackground() {
             <button
               type="button"
               onClick={() => router.push("/contact")}
-              className="mt-10 px-10 py-4 border border-white uppercase tracking-wide text-sm hover:bg-white hover:text-primary transition"
+              className="mt-10 px-10 py-4 border border-secondary uppercase tracking-wide text-sm hover:bg-accent hover:text-primary transition"
             >
               GET IN TOUCH <span aria-hidden="true">&rarr;</span>
             </button>
@@ -102,8 +102,8 @@ export default function ProfessionalBackground() {
       </div>
       <footer className="m-0 p-0 bg-secondary text-primary">
         <div className="lg:hidden px-6 py-16 text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold">
-            Contact Information
+          <h2 className="text-3xl sm:text-4xl font-semibold whitespace-nowrap">
+            Dr. Maya Reynolds
           </h2>
 
           <p className="mt-6 text-base sm:text-lg leading-relaxed">
@@ -148,8 +148,8 @@ export default function ProfessionalBackground() {
         <div className="hidden lg:block max-w-7xl mx-auto px-6 py-16">
           <div className="grid grid-cols-[1.6fr_1fr_1fr] gap-12 items-start text-left">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-semibold">
-                Contact Information
+              <h2 className="text-3xl sm:text-4xl font-semibold whitespace-nowrap">
+                Dr. Maya Reynolds
               </h2>
 
               <p className="mt-6 text-base sm:text-lg leading-relaxed">
@@ -218,13 +218,13 @@ export default function ProfessionalBackground() {
               </a>
             </div>
             <p className="mt-4">
-              Website Template Credits:{" "}
+              Credits{" "}
               <a className="underline" href="#">
-                Go Bloom Creative
+                Are Mabel
               </a>
             </p>
             <p className="mt-2">
-              © 2024 Dr. Maya Reynolds, PsyD. All Rights Reserved.
+              © 2026 Dr. Maya Reynolds, PsyD. All Rights Reserved.
             </p>
           </div>
         </div>

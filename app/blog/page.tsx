@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { BLOG_POSTS } from "./posts";
+import RevealSection from "@/components/RevealSection";
 
 export default function BlogPage() {
   const [open, setOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-secondary text-primary">
-      <header className="sticky top-0 z-40 flex items-center justify-between px-6 py-4 bg-white shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-4 bg-white shadow-sm">
         <button
           onClick={() => setOpen(!open)}
           className="flex flex-col gap-1.25 w-10 lg:hidden"
@@ -20,7 +21,9 @@ export default function BlogPage() {
           <span className="block w-8 h-0.5 bg-primary"></span>
         </button>
 
-        <h1 className="text-xl lg:text-3xl font-semibold">Dr. Maya Reynolds</h1>
+        <h1 className="text-xl lg:text-3xl font-semibold whitespace-nowrap">
+          Dr. Maya Reynolds
+        </h1>
 
         <nav className="hidden lg:flex gap-8 text-primary lg:text-xl">
           <a className="hover:text-accent transition" href="/blog">
@@ -32,8 +35,10 @@ export default function BlogPage() {
         </nav>
       </header>
 
+      <div className="h-16 lg:h-20" aria-hidden="true"></div>
+
       {open && (
-        <div className="fixed inset-0 z-50 bg-white">
+        <div className="fixed inset-0 z-50 bg-white overflow-y-auto">
           <button
             onClick={() => setOpen(false)}
             className="absolute left-6 top-6 text-3xl font-semibold"
@@ -58,34 +63,40 @@ export default function BlogPage() {
         </div>
       )}
 
-      <div className="px-6 py-16 bg-secondary text-primary">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-2 lg:gap-0">
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <div className="w-44 sm:w-52 lg:w-100">
-              <div className="rounded-t-[999px] overflow-hidden bg-white">
-                <img
-                  src="/blog.jpg"
-                  alt="Blog"
-                  className="w-full h-auto block"
-                />
+      <RevealSection delayMs={100}>
+        <div className="px-6 py-16 bg-secondary text-primary">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-2 lg:gap-0">
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="w-44 sm:w-52 lg:w-100">
+                <div className="rounded-t-[999px] overflow-hidden bg-white">
+                  <img
+                    src="/blog.jpg"
+                    alt="Blog"
+                    className="w-full h-auto block"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-semibold leading-tight">
-              The Blog
-            </h2>
-            <p className="mt-6 text-lg sm:text-xl lg:text-3xl leading-relaxed">
-              Reflections on anxiety, trauma, burnout, and the inner experiences
-              that shape how we live and relate. This space is for thoughtful
-              insights grounded in clinical experience and everyday life.
-            </p>
+            <div className="w-full lg:w-1/2 text-center lg:text-left">
+              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-semibold leading-tight">
+                The Blog
+              </h2>
+              <p className="mt-6 text-lg sm:text-xl lg:text-3xl leading-relaxed">
+                Reflections on anxiety, trauma, burnout, and the inner
+                experiences that shape how we live and relate. This space is for
+                thoughtful insights grounded in clinical experience and everyday
+                life.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </RevealSection>
 
-      <section className="px-6 pb-0 bg-secondary text-primary">
+      <RevealSection
+        delayMs={150}
+        className="px-6 pb-0 bg-secondary text-primary"
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16">
           {BLOG_POSTS.map((post) => (
             <article key={post.slug}>
@@ -110,8 +121,8 @@ export default function BlogPage() {
           ))}
         </div>
         <div className="mt-16 -mx-6">
-          <div className="bg-primary text-white px-6 py-10 sm:py-14 border-y border-primary/80">
-            <div className="max-w-4xl mx-auto border border-white/60 px-6 py-10 sm:px-10 sm:py-14 text-center">
+          <div className="bg-primary text-secondary px-6 py-10 sm:py-14 border-y border-primary/80">
+            <div className="max-w-4xl mx-auto border border-secondary/60 px-6 py-10 sm:px-10 sm:py-14 text-center">
               <h3 className="text-3xl sm:text-5xl font-semibold">Subscribe</h3>
               <p className="mt-6 text-base sm:text-xl leading-relaxed max-w-2xl mx-auto">
                 Sign up with your email address to receive news and updates.
@@ -125,7 +136,7 @@ export default function BlogPage() {
 
               <button
                 type="button"
-                className="mt-8 border border-white/70 px-10 py-4 sm:px-14 sm:py-5 text-lg sm:text-xl tracking-wide"
+                className="mt-8 border border-secondary/70 px-10 py-4 sm:px-14 sm:py-5 text-lg sm:text-xl tracking-wide hover:bg-accent hover:text-primary transition"
               >
                 SIGN UP
               </button>
@@ -138,8 +149,8 @@ export default function BlogPage() {
         </div>
         <footer className="m-0 p-0 bg-secondary text-primary">
           <div className="lg:hidden px-6 py-16 text-center">
-            <h2 className="text-3xl sm:text-4xl font-semibold">
-              Contact Information
+            <h2 className="text-3xl sm:text-4xl font-semibold whitespace-nowrap">
+              Dr. Maya Reynolds
             </h2>
 
             <p className="mt-6 text-base sm:text-lg leading-relaxed">
@@ -184,8 +195,8 @@ export default function BlogPage() {
           <div className="hidden lg:block max-w-7xl mx-auto px-6 py-16">
             <div className="grid grid-cols-[1.6fr_1fr_1fr] gap-12 items-start text-left">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-semibold">
-                  Contact Information
+                <h2 className="text-3xl sm:text-4xl font-semibold whitespace-nowrap">
+                  Dr. Maya Reynolds
                 </h2>
 
                 <p className="mt-6 text-base sm:text-lg leading-relaxed">
@@ -254,18 +265,18 @@ export default function BlogPage() {
                 </a>
               </div>
               <p className="mt-4">
-                Website Template Credits:{" "}
+                Credits{" "}
                 <a className="underline" href="#">
-                  Go Bloom Creative
+                  Are Mabel
                 </a>
               </p>
               <p className="mt-2">
-                © 2024 Dr. Maya Reynolds, PsyD. All Rights Reserved.
+                © 2026 Dr. Maya Reynolds, PsyD. All Rights Reserved.
               </p>
             </div>
           </div>
         </footer>
-      </section>
+      </RevealSection>
     </div>
   );
 }

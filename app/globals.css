@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6b5b95;
-  --color-secondary: #f5f3f7;
-  --color-accent: #e8b4b8;
+  --color-primary: #4f6d62;
+  --color-secondary: #f4f7f4;
+  --color-accent: #c8a97e;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-inter);
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 h1,
