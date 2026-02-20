@@ -1,11 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RevealSection from "@/components/RevealSection";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
   return (
     <div className="min-h-screen bg-secondary text-primary">
@@ -117,7 +130,7 @@ export default function Home() {
                 height="350"
                 frameBorder="0"
                 title="Schedule appointment"
-                className="rounded-lg lg:rounded-2xl lg:h-144"
+                className="rounded-lg [touch-action:pan-y] lg:rounded-2xl lg:h-144"
               ></iframe>
             </div>
           </div>
@@ -157,7 +170,7 @@ export default function Home() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Office Location"
-              className="lg:h-80"
+              className="[touch-action:pan-y] lg:h-80"
             ></iframe>
           </div>
 

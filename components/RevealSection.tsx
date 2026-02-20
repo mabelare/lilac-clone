@@ -15,6 +15,7 @@ export default function RevealSection({
   delayMs = 0,
 }: RevealSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [canAnimate, setCanAnimate] = useState(false);
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -25,6 +26,18 @@ export default function RevealSection({
     }
 
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      setCanAnimate(false);
+      setIsVisible(true);
+      return;
+    }
+
+    const shouldAnimate = window.matchMedia(
+      "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+    ).matches;
+
+    setCanAnimate(shouldAnimate);
+
+    if (!shouldAnimate) {
       setIsVisible(true);
       return;
     }
@@ -55,7 +68,11 @@ export default function RevealSection({
     <section
       ref={sectionRef}
       style={{ transitionDelay: `${delayMs}ms` }}
-      className={`transform-gpu transition-all duration-700 ease-out motion-reduce:transition-none ${
+      className={`${
+        canAnimate
+          ? "transition-[opacity,transform] duration-400 ease-out motion-reduce:transition-none"
+          : "transition-none"
+      } ${
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-6 motion-reduce:opacity-100 motion-reduce:translate-y-0"

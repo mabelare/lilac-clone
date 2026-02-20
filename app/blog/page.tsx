@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { BLOG_POSTS } from "./posts";
 import RevealSection from "@/components/RevealSection";
@@ -9,6 +9,19 @@ import RevealSection from "@/components/RevealSection";
 export default function BlogPage() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
   return (
     <div className="min-h-screen bg-secondary text-primary">
